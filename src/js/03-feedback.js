@@ -20,10 +20,7 @@ function restoreForm() {
   }
 }
 
-const throttledSaveForm = throttle(saveFormData, 500);
-
-emailInput.addEventListener('input', throttledSaveForm);
-messageInput.addEventListener('input', throttledSaveForm);
+emailInput.addEventListener('input', throttle(saveFormData, 500));
 
 window.onload = () => {
   restoreForm();
