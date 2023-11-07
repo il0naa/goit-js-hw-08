@@ -21,6 +21,7 @@ function restoreForm() {
 }
 
 emailInput.addEventListener('input', throttle(saveFormData, 500));
+messageInput.addEventListener('input', throttle(saveFormData, 500));
 
 window.onload = () => {
   restoreForm();
@@ -28,11 +29,15 @@ window.onload = () => {
 
 feedbackForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  localStorage.removeItem('feedback-form-state');
 
   const formData = {
     email: emailInput.value,
     message: messageInput.value,
   };
   console.log(formData);
+
+  emailInput.value = '';
+  messageInput.value = '';
+
+  saveFormData();
 });
